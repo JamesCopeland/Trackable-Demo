@@ -5,6 +5,12 @@
 
   feather.replace({ 'aria-hidden': 'true' })
 
+  axios.get('https://trackableapi.azurewebsites.net/api/Tasks')
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
+
   // Graphs
   var ctx = document.getElementById('myChart')
   // eslint-disable-next-line no-unused-vars
