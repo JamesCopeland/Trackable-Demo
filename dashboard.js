@@ -5,7 +5,14 @@
 
   feather.replace({ 'aria-hidden': 'true' })
 
-  axios.get('https://trackableapi.azurewebsites.net/api/Tasks')
+  axios({
+    method: 'get',
+    url: 'https://trackableapi.azurewebsites.net/api/Tasks',
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+    }
+  })
   .then(function (response) {
     // handle success
     console.log(response);
