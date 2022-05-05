@@ -1,4 +1,6 @@
 /* globals Chart:false, feather:false */
+const baseURL = "https://trackableapi.azurewebsites.net";
+//const baseURL = "https://localhost:7259";
 
 (function () {
   'use strict'
@@ -23,11 +25,6 @@
       buildCell(5, row, `<button type="button" class="btn btn-danger delete-btn" onclick="deleteTask(this, ${element.id})">Delete</button>`)
 
     });
-  }
-
-  function clearTable() {
-    var table = document.getElementById("task-table-body")
-    table.innerHTML = "";
   }
 
   function buildCell(i, row, text) {
@@ -108,7 +105,7 @@ function deleteTask(element, id) {
 
   return axios({
     method: 'delete',
-    url: `https://trackableapi.azurewebsites.net/api/Tasks/${id}`,
+    url: `${baseURL}/api/Tasks/${id}`,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
@@ -125,12 +122,12 @@ function createTask(task) {
 
   return axios({
     method: 'post',
-    url: `https://trackableapi.azurewebsites.net/api/Tasks`,
+    url: `${baseURL}/api/Tasks`,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
     },
-    body: task
+    body: (task)
   })
   .then(function (response) {
     // handle success
@@ -145,10 +142,15 @@ function createTask(task) {
 function getTasks(callbck) {
   return axios({
     method: 'get',
-    url: 'https://trackableapi.azurewebsites.net/api/Tasks',
+    url: `${baseURL}/api/Tasks`,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
     }
   })
+}
+
+function clearTable() {
+  var table = document.getElementById("task-table-body")
+  table.innerHTML = "";
 }
