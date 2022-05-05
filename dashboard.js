@@ -98,6 +98,45 @@ const baseURL = "https://trackableapi.azurewebsites.net";
     })
   })
 
+function createTask(newTask) {
+
+  var headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'application/json',
+  }
+
+  return (axios.post(`${baseURL}/api/Tasks`, newTask, { headers } )
+  .then(function (response) {
+    // handle success
+    getTasks().then(function(response) {
+      clearTable()
+      buildTable(response.data)
+      let modalEl = document.getElementById("createTaskModal")
+      let modal = bootstrap.Modal.getInstance(modalEl)
+      modal.hide()
+
+      newTaskForm.reset()
+    })
+  }))
+  
+}
+
+function getTasks() {
+  return axios({
+    method: 'get',
+    url: `${baseURL}/api/Tasks`,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+    }
+  })
+}
+
+function clearTable() {
+  var table = document.getElementById("task-table-body")
+  table.innerHTML = "";
+}
+
 })()
 
 function deleteTask(element, id) {
@@ -116,41 +155,4 @@ function deleteTask(element, id) {
     row.remove();
   })
   
-}
-
-function createTask(task) {
-
-  return axios({
-    method: 'post',
-    url: `${baseURL}/api/Tasks`,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-    },
-    body: (task)
-  })
-  .then(function (response) {
-    // handle success
-    clearTable()
-    getTasks().then(function(response) {
-      buildTable(response.data)
-    })
-  })
-  
-}
-
-function getTasks(callbck) {
-  return axios({
-    method: 'get',
-    url: `${baseURL}/api/Tasks`,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-    }
-  })
-}
-
-function clearTable() {
-  var table = document.getElementById("task-table-body")
-  table.innerHTML = "";
 }
