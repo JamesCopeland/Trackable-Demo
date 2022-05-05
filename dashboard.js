@@ -39,23 +39,23 @@ const baseURL = "https://trackableapi.azurewebsites.net";
     type: 'line',
     data: {
       labels: [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
+        'October',
+        'November',
+        'December',
+        'January',
+        'February',
+        'March',
+        'April'
       ],
       datasets: [{
         data: [
-          15339,
-          21345,
-          18483,
-          24003,
-          23489,
-          24092,
-          12034
+          2,
+          5,
+          3,
+          5,
+          12,
+          9,
+          4
         ],
         lineTension: 0,
         backgroundColor: 'transparent',
