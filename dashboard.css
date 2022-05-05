@@ -98,3 +98,9 @@ body {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
+
+/* custom */
+.delete-btn {
+  font-size: 0.875rem;
+  line-height: 1;
+}
