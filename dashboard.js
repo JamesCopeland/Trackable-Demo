@@ -17,7 +17,7 @@ const baseURL = "https://trackableapi.azurewebsites.net";
     data.forEach((element, i) => {
       var row = table.insertRow(i)
 
-      buildCell(0, row, element.id)
+      buildCell(0, row, element.taskId)
       buildCell(1, row, element.name)
       buildCell(2, row, element.message)
       buildCell(3, row, element.status)
