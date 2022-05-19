@@ -1,6 +1,6 @@
 # Trackable-Demo
 
-This demo is now deprecated in favor of a more robust JS SPA found here: https://github.com/JamesCopeland/Trackable-Dashboard
+⚠️This demo is now deprecated in favor of a more robust JS SPA found here: https://github.com/JamesCopeland/Trackable-Dashboard
 
 ## Description
 This is the frontend website for my Trackable demo app. The app is simply a task-tracking app that will allow users to create, edit, and delete their tasks 
